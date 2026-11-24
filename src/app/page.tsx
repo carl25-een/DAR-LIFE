@@ -22,7 +22,7 @@ export default function Home() {
         <section id="events" className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-4 pt-14 sm:px-6 sm:pt-20">
           <h1 className="mx-auto max-w-3xl text-center text-4xl font-black leading-tight tracking-tight sm:text-5xl">
             What's happening in{" "}
-            <span className="underline decoration-4 underline-offset-8">Dar es Salaam?</span>
+            <span className="text-red-600 underline decoration-red-600 decoration-4 underline-offset-8">Dar es Salaam?</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-stone-500">
             Concerts, brunches, beach parties, workshops and weekends away —
