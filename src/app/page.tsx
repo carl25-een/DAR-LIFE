@@ -2,36 +2,19 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Discovery from "@/components/Discovery";
 import EventCard from "@/components/EventCard";
+import ExperienceCard from "@/components/ExperienceCard";
+import Link from "next/link";
 import { EVENTS } from "@/lib/events";
-
-const EXPERIENCES = [
-  {
-    title: "Bongoyo Island Boat Trips",
-    detail: "Half-day · from Slipway",
-    gradient: "from-cyan-500 via-sky-600 to-blue-800",
-  },
-  {
-    title: "Padel Courts in Masaki",
-    detail: "Hourly court bookings",
-    gradient: "from-lime-500 via-green-600 to-emerald-800",
-  },
-  {
-    title: "Swahili Cooking Classes",
-    detail: "Market tour + lunch",
-    gradient: "from-amber-500 via-orange-600 to-red-700",
-  },
-  {
-    title: "Golden-Hour Photo Walks",
-    detail: "Old Town & the harbour",
-    gradient: "from-fuchsia-500 via-purple-600 to-indigo-800",
-  },
-];
+import { EXPERIENCES } from "@/lib/experiences";
 
 export default function Home() {
   const featured = EVENTS.filter((event) => event.featured);
+  const featuredExperiences = EXPERIENCES.filter(
+    (experience) => experience.featured,
+  );
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#faf6ef] text-stone-900">
+    <div className="flex min-h-screen flex-col bg-[#f7f7f7] text-stone-900">
       <Navbar />
 
       <main className="flex-1">
@@ -39,7 +22,7 @@ export default function Home() {
         <section id="events" className="mx-auto max-w-6xl scroll-mt-24 px-4 pb-4 pt-14 sm:px-6 sm:pt-20">
           <h1 className="mx-auto max-w-3xl text-center text-4xl font-black leading-tight tracking-tight sm:text-5xl">
             What's happening in{" "}
-            <span className="text-orange-700">Dar es Salaam?</span>
+            <span className="underline decoration-4 underline-offset-8">Dar es Salaam?</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-center text-lg text-stone-500">
             Concerts, brunches, beach parties, workshops and weekends away —
@@ -80,26 +63,32 @@ export default function Home() {
           id="experiences"
           className="mx-auto max-w-6xl scroll-mt-24 px-4 py-16 sm:px-6"
         >
-          <h2 className="text-2xl font-extrabold tracking-tight">
-            Experiences to explore
-          </h2>
+          <div className="flex items-end justify-between">
+            <h2 className="text-2xl font-extrabold tracking-tight">
+              Experiences to explore
+            </h2>
+            <Link
+              href="/experiences"
+              className="hidden text-sm font-semibold text-stone-900 hover:underline sm:block"
+            >
+              See all experiences →
+            </Link>
+          </div>
           <p className="mt-2 max-w-xl text-stone-500">
             Beyond events — bookable activities across the city, from island
             boats to padel courts.
           </p>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {EXPERIENCES.map((experience) => (
-              <div
-                key={experience.title}
-                className={`flex h-40 flex-col justify-end rounded-2xl bg-gradient-to-br p-5 text-white shadow-sm ${experience.gradient}`}
-              >
-                <p className="text-base font-bold leading-snug">
-                  {experience.title}
-                </p>
-                <p className="mt-1 text-sm text-white/80">{experience.detail}</p>
-              </div>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featuredExperiences.map((experience) => (
+              <ExperienceCard key={experience.id} experience={experience} />
             ))}
           </div>
+          <Link
+            href="/experiences"
+            className="mt-6 inline-block text-sm font-semibold text-stone-900 hover:underline sm:hidden"
+          >
+            See all experiences →
+          </Link>
         </section>
 
         {/* Vendors teaser */}

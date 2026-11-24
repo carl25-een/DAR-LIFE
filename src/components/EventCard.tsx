@@ -15,14 +15,14 @@ export default function EventCard({ event }: { event: EventItem }) {
           {event.category}
         </span>
         {event.featured && (
-          <span className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-bold text-orange-700 shadow">
+          <span className="absolute right-4 top-4 rounded-full bg-white px-3 py-1 text-xs font-bold text-stone-900 shadow">
             ★ Featured
           </span>
         )}
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <h3 className="text-lg font-bold leading-snug text-stone-900 group-hover:text-orange-700">
+        <h3 className="text-lg font-bold leading-snug text-stone-900 group-hover:text-black">
           {event.title}
         </h3>
         <p className="text-sm font-medium text-stone-500">

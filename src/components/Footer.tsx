@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
           <p className="text-xl font-black tracking-tight text-white">
-            DAR <span className="text-orange-500">LIFE</span>
+            DAR <span className="underline decoration-2 underline-offset-4">LIFE</span>
           </p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-stone-400">
             What's happening in Dar es Salaam — events, experiences and the

@@ -21,7 +21,7 @@ export default async function EventDetailPage({
   }
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#faf6ef] text-stone-900">
+    <div className="flex min-h-screen flex-col bg-[#f7f7f7] text-stone-900">
       <Navbar />
 
       <main className="flex-1">
@@ -39,7 +39,7 @@ export default async function EventDetailPage({
         <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
           <Link
             href="/#events"
-            className="text-sm font-semibold text-orange-700 hover:underline"
+            className="text-sm font-semibold text-stone-900 hover:underline"
           >
             ← Back to events
           </Link>
@@ -97,7 +97,7 @@ export default async function EventDetailPage({
                     return (
                       <li
                         key={ticket.name}
-                        className="flex items-center justify-between rounded-xl bg-[#faf6ef] px-4 py-3 ring-1 ring-stone-200/60"
+                        className="flex items-center justify-between rounded-xl bg-neutral-50 px-4 py-3 ring-1 ring-stone-200/60"
                       >
                         <div>
                           <p className="text-sm font-bold text-stone-900">
@@ -105,7 +105,7 @@ export default async function EventDetailPage({
                           </p>
                           <p
                             className={`text-xs font-medium ${
-                              soldOut ? "text-red-600" : "text-stone-500"
+                              soldOut ? "font-semibold text-stone-900" : "text-stone-500"
                             }`}
                           >
                             {soldOut

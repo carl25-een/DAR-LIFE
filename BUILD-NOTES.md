@@ -95,3 +95,88 @@ with its own dummy data and detail pages mirroring the events pattern.
 After that, the natural step is the Phase 5 work from the blueprint:
 Supabase database + authentication, moving events out of `lib/events.ts`
 into real tables.
+
+## Increment 2: Discovery filters + sort, and Experiences pages
+
+**Status:** Built 24 Nov 2026 and verified — `npm run build` passes clean.
+Still frontend only: no database, no login, no payments. Nothing here is
+deployed or pushed yet — this lives in the local workspace copy only, so
+Carleen reviews it first and the Vercel deployment (which still waits on
+her pasting the live link from her laptop) picks it up when the code is
+pushed to GitHub.
+
+### What changed, in plain language
+
+- **Discovery grew three new controls** (`src/components/Discovery.tsx`):
+  date chips — Any day / Weekends (Sat–Sun) / Weekdays (Mon–Fri); price
+  chips — Any price / Free / Under TSh 30,000 / Under TSh 50,000; and a
+  sort dropdown — Soonest first (the default), Lowest price, Highest
+  price. A "Clear all filters" link appears whenever any filter is on,
+  and the page now says how many events match ("10 events found"). The
+  empty state ("Nothing matches that search — yet") now clears every
+  filter, not just the search box.
+- **Experiences are now real pages, not a teaser strip**
+  (`src/lib/experiences.ts`, `src/components/ExperienceCard.tsx`,
+  `src/app/experiences/page.tsx`,
+  `src/app/experiences/[id]/page.tsx`). Six sample experiences — Bongoyo
+  Island boat trips, Swahili cooking classes, padel in Masaki, golden-hour
+  photo walks, Mbudya Island snorkelling, and a sunset dhow cruise — each
+  with bookable slots instead of a single date, because experiences repeat
+  and events happen once. The detail page mirrors the event detail page:
+  description, duration, provider, slot list with places left, and a
+  disabled "Booking opens in a later phase" button.
+- **The home page teaser now shows the real experience cards**
+  (`src/app/page.tsx`) — the three featured experiences, each linking to
+  its detail page — with a "See all experiences →" link to the listing.
+  The navbar's "Experiences" link now goes to `/experiences` instead of
+  jumping down the home page.
+
+### What is dummy (same rules as Increment 1)
+
+- All 6 experiences are invented sample content, clearly marked in
+  `src/lib/experiences.ts`, to be replaced by the database in a later
+  phase. Card covers are still colour gradients, not real photos.
+- "Sign in" and "Create event" are still visual placeholders, and both
+  booking buttons still do nothing on purpose.
+
+### How to check it
+
+- `npm run dev`, then open http://localhost:3000 — try "Weekends" +
+  "Under TSh 50,000" + "Lowest price" on the event grid, then click
+  "Experiences" in the navbar and open the dhow cruise.
+- `npm run build` — the "does it really work?" test; it passed clean for
+  this increment.
+
+### Recommended next increment
+
+**Phase 5 — Supabase database + authentication:** move events and
+experiences out of `src/lib/events.ts` / `src/lib/experiences.ts` into
+real tables, add sign-in, and let organisers create events. That is the
+step that turns the dummy data real — it needs the free Supabase project
+set up first, which is a couple of minutes in the Supabase dashboard.
+
+---
+
+## Black-and-white restyle (24 Nov 2026)
+
+At Carleen's request the whole site is now monochrome — a colour-only
+change; layout, content, data and behaviour are untouched.
+
+- Page background is very light grey (`#f7f7f7`), text near-black
+  (`#0a0a0a`); the warm cream background and deep-orange accent are gone.
+- Every accent is now black: the wordmark (with an underlined "LIFE"
+  instead of orange), the "Create event" button, active filter chips,
+  focus rings, links, and the "★ Featured" badges (white pill, black text).
+- The hero's emphasis word ("Dar es Salaam?") uses a black underline
+  instead of orange; "Sold out" labels are black instead of red.
+- All card covers (`imageGradient` in `src/lib/events.ts` and
+  `src/lib/experiences.ts`) are now a rotation of black, charcoal, grey
+  and silver gradients, with one near-white cover for variety — the dark
+  category chips stay readable on all of them.
+- Verified: production build passes clean; home, an event page and the
+  experiences pages return 200; screenshots in
+  `~/workspace/dar-life-preview/bw-*.png`.
+
+This restyle is **local only — not pushed to GitHub yet**, so the live
+Vercel site still shows the previous cream-and-orange design until the
+next push.

@@ -51,7 +51,7 @@ export const EVENTS: EventItem[] = [
     venue: "The Slipway Terrace",
     area: "Masaki",
     priceTsh: 45000,
-    imageGradient: "from-amber-500 via-orange-600 to-rose-700",
+    imageGradient: "from-neutral-950 via-neutral-800 to-neutral-600",
     organiser: "Sauti Live",
     featured: true,
     description:
@@ -71,7 +71,7 @@ export const EVENTS: EventItem[] = [
     venue: "Coco Beach",
     area: "Oyster Bay",
     priceTsh: 30000,
-    imageGradient: "from-orange-400 via-rose-500 to-purple-700",
+    imageGradient: "from-zinc-900 via-zinc-700 to-zinc-500",
     organiser: "Bahari Beats",
     featured: true,
     description:
@@ -91,7 +91,7 @@ export const EVENTS: EventItem[] = [
     venue: "Garden Bistro, Chole Road",
     area: "Masaki",
     priceTsh: 65000,
-    imageGradient: "from-yellow-400 via-amber-500 to-orange-600",
+    imageGradient: "from-stone-900 via-stone-700 to-stone-500",
     organiser: "Brunch Club DSM",
     featured: false,
     description:
@@ -110,7 +110,7 @@ export const EVENTS: EventItem[] = [
     venue: "Hyatt Regency, The Kilimanjaro Ballroom",
     area: "Upanga",
     priceTsh: 25000,
-    imageGradient: "from-fuchsia-500 via-purple-600 to-indigo-800",
+    imageGradient: "from-neutral-900 via-neutral-700 to-neutral-500",
     organiser: "Dar Style Collective",
     featured: true,
     description:
@@ -130,7 +130,7 @@ export const EVENTS: EventItem[] = [
     venue: "Mbezi Beach, Africana area",
     area: "Mbezi Beach",
     priceTsh: 20000,
-    imageGradient: "from-teal-400 via-emerald-500 to-green-700",
+    imageGradient: "from-zinc-800 via-zinc-600 to-zinc-400",
     organiser: "Pumzika Wellness",
     featured: false,
     description:
@@ -149,7 +149,7 @@ export const EVENTS: EventItem[] = [
     venue: "Co-working Rooftop, Ohio Street",
     area: "City Centre",
     priceTsh: 0,
-    imageGradient: "from-sky-500 via-blue-600 to-indigo-700",
+    imageGradient: "from-stone-950 via-stone-800 to-stone-600",
     organiser: "Dar Founders Circle",
     featured: false,
     description:
@@ -167,7 +167,7 @@ export const EVENTS: EventItem[] = [
     venue: "Meet at Kariakoo Market, Uhuru Street entrance",
     area: "Kariakoo",
     priceTsh: 15000,
-    imageGradient: "from-red-500 via-orange-600 to-amber-600",
+    imageGradient: "from-neutral-800 via-neutral-600 to-neutral-400",
     organiser: "Tembea Dar",
     featured: false,
     description:
@@ -186,7 +186,7 @@ export const EVENTS: EventItem[] = [
     venue: "Mikocheni Grounds, Rose Garden Road",
     area: "Mikocheni",
     priceTsh: 10000,
-    imageGradient: "from-lime-500 via-green-600 to-emerald-800",
+    imageGradient: "from-zinc-950 via-zinc-800 to-zinc-600",
     organiser: "Chakula Events",
     featured: false,
     description:
@@ -205,7 +205,7 @@ export const EVENTS: EventItem[] = [
     venue: "Udongo Studio",
     area: "Mikocheni",
     priceTsh: 55000,
-    imageGradient: "from-stone-500 via-amber-700 to-orange-900",
+    imageGradient: "from-stone-800 via-stone-600 to-stone-400",
     organiser: "Udongo Studio",
     featured: false,
     description:
@@ -223,7 +223,7 @@ export const EVENTS: EventItem[] = [
     venue: "Departs from Slipway, Masaki",
     area: "Bagamoyo day trip",
     priceTsh: 85000,
-    imageGradient: "from-cyan-500 via-sky-600 to-blue-800",
+    imageGradient: "from-neutral-100 via-neutral-200 to-neutral-300",
     organiser: "Pwani Adventures",
     featured: false,
     description:
