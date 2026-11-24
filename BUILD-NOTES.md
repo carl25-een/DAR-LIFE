@@ -180,3 +180,77 @@ change; layout, content, data and behaviour are untouched.
 This restyle is **local only — not pushed to GitHub yet**, so the live
 Vercel site still shows the previous cream-and-orange design until the
 next push.
+
+---
+
+## Phase 5 — Database & Authentication scaffolding (24 Nov 2026)
+
+The wiring for Supabase (PostgreSQL database + user accounts) is now in
+the code, ready for the moment the Supabase project exists. Nothing on
+the visible site has changed except that "Sign in" now leads to a real
+sign-in page — events and experiences still run on the dummy data in
+`src/lib/`, and the switch to real database data is the next increment,
+once the connection has been tested.
+
+### What was added
+
+- **Packages:** `@supabase/supabase-js` and `@supabase/ssr` installed.
+- **`.env.example`** — documents the two settings the app needs
+  (`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`).
+  Real values go in `.env.local`, which is gitignored and must never be
+  committed. (`.gitignore` gained a `!.env.example` exception so the
+  example file itself can be committed.)
+- **`supabase/schema.sql`** — the whole Phase 5 database in one file:
+  `profiles` (one row per user, with a role: user / organiser /
+  provider / vendor / admin), `events`, `ticket_types`, `experiences`
+  and `experience_slots`, mirroring the fields the dummy data uses.
+  Row Level Security is switched on for every table: anyone can read
+  *published* events, experiences, ticket types and slots; a user can
+  read and update only their own profile; and a database trigger
+  automatically creates a profile row the moment someone signs up.
+- **`src/lib/supabase/`** — the connection helpers, following the
+  current `@supabase/ssr` guidance for Next 16: `config.ts` (checks
+  whether the settings exist), `client.ts` (browser client, for forms),
+  `server.ts` (server client, awaits `cookies()` as Next 16 requires).
+  All of them return "not configured" gracefully instead of crashing.
+- **`src/proxy.ts`** — Next 16 renamed *middleware* to *proxy*. This
+  file refreshes the sign-in session cookie on each request (that is
+  what keeps people signed in). With no Supabase settings present it
+  passes requests through untouched.
+- **Pages:** `/sign-in` and `/sign-up` (email + password forms in the
+  site's black-and-white design, with the red accent on the links),
+  and `/account`, which shows the signed-in user's email plus a
+  sign-out button, or a friendly "you are not signed in" state.
+  The navbar's "Sign in" link now points to `/sign-in`.
+- Until Supabase is connected, the forms explain that accounts are
+  "not switched on yet" rather than failing — try them and see.
+
+### Verified
+
+- `npm run build` passes clean with **no** environment variables set.
+- Production server smoke test: `/`, `/sign-in`, `/sign-up` and
+  `/account` all return 200; `/account` shows the not-signed-in state.
+- One Next 16 lesson worth remembering: this project has Cache
+  Components enabled, so `export const dynamic = "force-dynamic"` is
+  banned — request-time reads (like the session cookie on `/account`)
+  must live inside a `<Suspense>` boundary instead.
+
+### What Carleen must do in Supabase (one-time setup)
+
+1. Create the free project at supabase.com (name it DAR LIFE, choose a
+   strong database password and save it somewhere safe, region:
+   whichever is closest — e.g. EU / Frankfurt).
+2. In the project: **SQL Editor → New query** → paste in the whole of
+   `supabase/schema.sql` → **Run**. You should see the five tables
+   appear under **Table Editor**.
+3. Go to **Settings → API** and copy the **Project URL** and the
+   **anon public** key.
+4. Put them in a file called `.env.local` in the project root (copy
+   `.env.example` and fill in the two values) for local development.
+5. Add the same two values in **Vercel → your DAR LIFE project →
+   Settings → Environment Variables**, so the live site can connect.
+6. Tell Muse the connection is ready — the next increment switches
+   events and experiences from dummy data to the database and tests a
+   real sign-up end to end.
+
+**Local only — not pushed to GitHub yet.**

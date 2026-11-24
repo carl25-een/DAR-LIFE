@@ -22,7 +22,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            href="#"
+            href="/sign-in"
             className="hidden text-sm font-medium text-stone-600 transition hover:text-stone-900 sm:block"
           >
             Sign in

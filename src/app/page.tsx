@@ -14,7 +14,7 @@ export default function Home() {
   );
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#f7f7f7] text-stone-900">
+    <div className="flex min-h-screen flex-col bg-white text-stone-900">
       <Navbar />
 
       <main className="flex-1">
