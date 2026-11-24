@@ -4,7 +4,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-stone-200/80 bg-white/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-        <Link href="/" className="text-xl font-black tracking-tight text-stone-900">
+        <Link href="/" className="text-xl font-black tracking-tight text-red-600">
           DAR <span className="underline decoration-2 underline-offset-4">LIFE</span>
         </Link>
 
