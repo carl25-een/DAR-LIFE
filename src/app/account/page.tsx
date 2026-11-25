@@ -16,9 +16,9 @@ export default function AccountPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-stone-900">
       <Navbar />
-      <main className="flex flex-1 items-center justify-center px-4 py-14 sm:px-6">
-        <div className="w-full max-w-md rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
-          <h1 className="text-2xl font-black tracking-tight">Your account</h1>
+      <main className="flex flex-1 items-center justify-center px-4 py-16 sm:px-6 sm:py-20">
+        <div className="w-full max-w-md rounded-3xl border border-stone-200 bg-white p-8 shadow-card sm:p-10">
+          <h1 className="font-display text-[1.75rem] font-bold tracking-tight">Your account</h1>
 
           {/* The signed-in state is read from cookies at request time.
               With Cache Components enabled, request-time reads like this
@@ -82,13 +82,13 @@ async function AccountDetails() {
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
                   href="/sign-in"
-                  className="rounded-full bg-stone-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-700"
+                  className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-stone-800 hover:shadow active:scale-[0.98]"
                 >
                   Sign in
                 </Link>
                 <Link
                   href="/sign-up"
-                  className="rounded-full border border-stone-300 bg-white px-5 py-2.5 text-sm font-semibold text-stone-900 transition hover:border-stone-900"
+                  className="rounded-full border border-stone-300 bg-white px-6 py-3 text-sm font-semibold text-stone-900 transition-all duration-200 hover:border-stone-900 hover:bg-stone-50 active:scale-[0.98]"
                 >
                   Create an account
                 </Link>

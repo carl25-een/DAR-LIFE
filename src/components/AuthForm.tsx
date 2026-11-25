@@ -76,24 +76,24 @@ export default function AuthForm({ mode }: AuthFormProps) {
   }
 
   const inputClasses =
-    "w-full rounded-xl border border-stone-300 bg-white px-4 py-3 text-sm text-stone-900 placeholder:text-stone-400 focus:border-stone-900 focus:outline-none focus:ring-2 focus:ring-stone-900/20";
+    "w-full rounded-2xl border border-stone-300 bg-white px-4 py-3.5 text-[15px] text-stone-900 transition-all duration-200 placeholder:text-stone-400 hover:border-stone-400 focus:border-stone-900 focus:outline-none focus:ring-4 focus:ring-stone-900/10";
 
   return (
-    <div className="w-full max-w-md rounded-3xl border border-stone-200 bg-white p-8 shadow-sm">
-      <h1 className="text-2xl font-black tracking-tight">
+    <div className="w-full max-w-md rounded-3xl border border-stone-200 bg-white p-8 shadow-card sm:p-10">
+      <h1 className="font-display text-[1.75rem] font-bold tracking-tight">
         {isSignUp ? "Create your account" : "Welcome back"}
       </h1>
-      <p className="mt-2 text-sm text-stone-500">
+      <p className="mt-2.5 text-[15px] leading-relaxed text-stone-500">
         {isSignUp
           ? "Join DAR LIFE to book tickets and experiences across Dar es Salaam."
           : "Sign in to manage your DAR LIFE bookings and tickets."}
       </p>
 
-      <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+      <form onSubmit={handleSubmit} className="mt-8 space-y-5">
         <div>
           <label
             htmlFor="email"
-            className="mb-1.5 block text-sm font-semibold text-stone-900"
+            className="mb-2 block text-sm font-semibold text-stone-900"
           >
             Email
           </label>
@@ -112,7 +112,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
         <div>
           <label
             htmlFor="password"
-            className="mb-1.5 block text-sm font-semibold text-stone-900"
+            className="mb-2 block text-sm font-semibold text-stone-900"
           >
             Password
           </label>
@@ -129,12 +129,12 @@ export default function AuthForm({ mode }: AuthFormProps) {
         </div>
 
         {error && (
-          <p className="rounded-xl bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+          <p className="rounded-2xl bg-red-50 px-4 py-3.5 text-sm font-medium text-red-700">
             {error}
           </p>
         )}
         {notice && (
-          <p className="rounded-xl bg-stone-100 px-4 py-3 text-sm font-medium text-stone-700">
+          <p className="rounded-2xl bg-stone-100 px-4 py-3.5 text-sm font-medium text-stone-700">
             {notice}
           </p>
         )}
@@ -142,7 +142,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-full bg-stone-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-stone-700 disabled:cursor-not-allowed disabled:opacity-60"
+          className="w-full rounded-full bg-stone-900 px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-stone-800 hover:shadow active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {submitting
             ? isSignUp
@@ -154,7 +154,7 @@ export default function AuthForm({ mode }: AuthFormProps) {
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-stone-500">
+      <p className="mt-8 text-center text-sm text-stone-500">
         {isSignUp ? (
           <>
             Already have an account?{" "}

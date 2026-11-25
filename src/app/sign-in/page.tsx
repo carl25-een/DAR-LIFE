@@ -12,7 +12,7 @@ export default function SignInPage() {
   return (
     <div className="flex min-h-screen flex-col bg-white text-stone-900">
       <Navbar />
-      <main className="flex flex-1 items-center justify-center px-4 py-14 sm:px-6">
+      <main className="flex flex-1 items-center justify-center px-4 py-16 sm:px-6 sm:py-20">
         <AuthForm mode="sign-in" />
       </main>
       <Footer />

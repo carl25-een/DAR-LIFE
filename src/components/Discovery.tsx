@@ -101,12 +101,12 @@ export default function Discovery({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search events, venues, organisers…"
-          className="w-full rounded-full border border-stone-300 bg-white px-6 py-4 text-base text-stone-900 shadow-sm outline-none transition placeholder:text-stone-400 focus:border-stone-900 focus:ring-4 focus:ring-stone-900/10"
+          className="w-full rounded-full border border-stone-200 bg-white px-7 py-4 text-base text-stone-900 shadow-card outline-none transition-all duration-200 placeholder:text-stone-400 hover:border-stone-300 focus:border-stone-900 focus:ring-4 focus:ring-stone-900/10"
         />
       </div>
 
       {/* Category chips */}
-      <div className="mt-6 flex flex-wrap justify-center gap-2">
+      <div className="mt-8 flex flex-wrap justify-center gap-2">
         {categories.map((category) => {
           const isActive = category === activeCategory;
           return (
@@ -114,10 +114,10 @@ export default function Discovery({
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
-              className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+              className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-all duration-200 active:scale-[0.97] ${
                 isActive
-                  ? "bg-stone-900 text-white shadow"
-                  : "bg-white text-stone-600 ring-1 ring-stone-300 hover:bg-stone-100"
+                  ? "bg-stone-900 text-white shadow-md"
+                  : "bg-white text-stone-600 ring-1 ring-stone-300 hover:bg-stone-50 hover:text-stone-900 hover:ring-stone-400"
               }`}
             >
               {category}
@@ -129,9 +129,9 @@ export default function Discovery({
       {children}
 
       {/* Date + price filters and sort */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
         <div className="flex items-center gap-2">
-          <span className="font-bold text-stone-500">When:</span>
+          <span className="text-xs font-bold uppercase tracking-wider text-stone-400">When:</span>
           {[
             { value: "all", label: "Any day" },
             { value: "weekend", label: "Weekends" },
@@ -141,10 +141,10 @@ export default function Discovery({
               key={option.value}
               type="button"
               onClick={() => setDateFilter(option.value)}
-              className={`rounded-full px-3 py-1.5 font-semibold transition ${
+              className={`rounded-full px-3.5 py-2 font-semibold transition-all duration-200 active:scale-[0.97] ${
                 dateFilter === option.value
-                  ? "bg-stone-900 text-white"
-                  : "bg-white text-stone-600 ring-1 ring-stone-300 hover:bg-stone-100"
+                  ? "bg-stone-900 text-white shadow-sm"
+                  : "bg-white text-stone-600 ring-1 ring-stone-300 hover:bg-stone-50 hover:text-stone-900 hover:ring-stone-400"
               }`}
             >
               {option.label}
@@ -153,7 +153,7 @@ export default function Discovery({
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="font-bold text-stone-500">Price:</span>
+          <span className="text-xs font-bold uppercase tracking-wider text-stone-400">Price:</span>
           {[
             { value: "any", label: "Any price" },
             { value: "free", label: "Free" },
@@ -164,10 +164,10 @@ export default function Discovery({
               key={option.value}
               type="button"
               onClick={() => setPriceFilter(option.value)}
-              className={`rounded-full px-3 py-1.5 font-semibold transition ${
+              className={`rounded-full px-3.5 py-2 font-semibold transition-all duration-200 active:scale-[0.97] ${
                 priceFilter === option.value
-                  ? "bg-stone-900 text-white"
-                  : "bg-white text-stone-600 ring-1 ring-stone-300 hover:bg-stone-100"
+                  ? "bg-stone-900 text-white shadow-sm"
+                  : "bg-white text-stone-600 ring-1 ring-stone-300 hover:bg-stone-50 hover:text-stone-900 hover:ring-stone-400"
               }`}
             >
               {option.label}
@@ -175,12 +175,12 @@ export default function Discovery({
           ))}
         </div>
 
-        <label className="flex items-center gap-2 font-bold text-stone-500">
+        <label className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-stone-400">
           Sort:
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}
-            className="rounded-full border border-stone-300 bg-white px-3 py-1.5 font-semibold text-stone-700 outline-none focus:border-stone-900"
+            className="cursor-pointer rounded-full border border-stone-300 bg-white px-3.5 py-2 text-sm font-semibold normal-case tracking-normal text-stone-700 shadow-sm outline-none transition-all duration-200 hover:border-stone-400 focus:border-stone-900 focus:ring-4 focus:ring-stone-900/10"
           >
             <option value="soonest">Soonest first</option>
             <option value="lowest">Lowest price</option>
@@ -192,38 +192,38 @@ export default function Discovery({
           <button
             type="button"
             onClick={clearAll}
-            className="font-semibold text-stone-900 underline hover:text-black"
+            className="text-sm font-semibold normal-case tracking-normal text-stone-900 underline underline-offset-4 transition-colors duration-200 hover:text-black"
           >
             Clear all filters
           </button>
         )}
       </div>
 
-      <p className="mt-6 text-center text-sm font-medium text-stone-500">
+      <p className="mt-8 text-center text-sm font-medium text-stone-500">
         {visible.length}{" "}
         {visible.length === 1 ? "event" : "events"} found
       </p>
 
       {/* Results grid */}
       {visible.length > 0 ? (
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
           {visible.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
         </div>
       ) : (
-        <div className="mt-10 rounded-2xl bg-white px-6 py-14 text-center ring-1 ring-stone-200/70">
-          <p className="text-lg font-bold text-stone-900">
+        <div className="mt-10 rounded-3xl border border-stone-200 bg-white px-6 py-16 text-center shadow-card">
+          <p className="font-display text-xl font-bold text-stone-900">
             Nothing matches that search — yet.
           </p>
-          <p className="mt-2 text-sm text-stone-500">
+          <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-stone-500">
             Try a different word, or clear the filters to see everything
             happening in Dar.
           </p>
           <button
             type="button"
             onClick={clearAll}
-            className="mt-5 rounded-full bg-stone-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-700"
+            className="mt-6 rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-stone-800 hover:shadow active:scale-[0.98]"
           >
             Show all events
           </button>

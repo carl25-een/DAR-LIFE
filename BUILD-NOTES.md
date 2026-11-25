@@ -254,3 +254,80 @@ once the connection has been tested.
    real sign-up end to end.
 
 **Local only — not pushed to GitHub yet.**
+
+---
+
+## UI polish pass — 2026-11-25
+
+A styling-only pass to give the whole site a more premium feel, after
+Carleen's feedback that the UI looked plain. No layout, content, data
+or route changes — same sections, same words, same dummy data. The
+settled brand identity is untouched: pure-white background, black &
+white palette, red DAR LIFE wordmark and red "Dar es Salaam?" hero
+accent. Supabase wiring and the auth flow work exactly as before.
+
+### Typography
+
+- New font pairing via `next/font/google` in `src/app/layout.tsx`:
+  **Space Grotesk** for display (headings, wordmark, prices — exposed
+  as the Tailwind `font-display` utility through `--font-display` in
+  `globals.css`) and **Inter** for body text (`font-sans`).
+  Geist Mono is kept for the mono token.
+- Type scale refined: hero is now `text-5xl → sm:text-6xl` with
+  tighter leading, section titles moved to confident `text-3xl`
+  display headings, detail-page titles to `text-4xl → sm:text-5xl`,
+  and body copy given relaxed leading (`leading-relaxed` /
+  `leading-8` for long-form text).
+
+### Depth language (cards, panels, auth)
+
+- Two shared shadow utilities in `globals.css` (`@utility`):
+  `shadow-card` for resting cards/panels and `shadow-card-hover`
+  for the lifted hover state — one soft, layered elevation style
+  used everywhere instead of flat `shadow-sm` + ring.
+- Event/experience cards: `rounded-3xl`, stone-200 border, taller
+  covers (h-48) whose gradient layer gently scales on hover, a
+  top-light/bottom-shade overlay on covers for depth, small-caps
+  category chips and Featured badges, roomier padding (p-6), and
+  the price row anchored to the card bottom above a hairline
+  divider so prices align across a row.
+- Detail pages: taller covers (h-72 → sm:h-96) with the same
+  vignette overlay, booking panel upgraded to the card treatment,
+  small-caps detail labels, and ticket/slot rows as roomier
+  rounded-2xl list cards with display-font prices. The disabled
+  checkout/booking buttons keep their wording and meaning, with a
+  softer disabled treatment.
+- Auth and account cards use the same border + `shadow-card` +
+  generous padding (sm:p-10); inputs are rounded-2xl with a soft
+  stone focus ring, matching the search input's language.
+
+### Spacing & controls
+
+- More generous rhythm throughout: hero and section padding up
+  (py-20 → sm:py-24 in places), wider grid gaps on desktop
+  (md:gap-8), more air between Featured/Upcoming and around
+  section headings.
+- Search input: softer border, card shadow, clear stone-900 focus
+  ring. Category/date/price chips: more padding, smoother
+  `transition-all` states with a subtle press effect, refined
+  inactive hover. Filter labels ("When:", "Price:", "Sort:") are
+  now small-caps; the sort select matches the chips.
+- Navbar is slightly taller (4.5rem) with a solid hairline border
+  and stronger blur; the wordmark is set in Space Grotesk; the
+  "Create event" button gained hover shadow and a press state.
+  Footer spacing and hierarchy refined (small-caps column headings,
+  roomier lists).
+- Micro-finishes: black text selection (`::selection`), smooth
+  scrolling, antialiased text everywhere, consistent
+  `duration-200/300` transitions and focus-visible rings.
+
+### Verified
+
+- `npm run build` passes clean (with `.env.local` present).
+- Production smoke test: `/`, `/events/coco-beach-sunset-sessions`,
+  `/experiences`, `/sign-in` and `/account` all return 200.
+- Screenshots in `~/workspace/dar-life-preview/`:
+  `polish-homepage-desktop.png`, `polish-homepage-mobile.png`,
+  `polish-event-detail.png`, `polish-sign-in.png`.
+
+**Local only — not pushed to GitHub yet.**
